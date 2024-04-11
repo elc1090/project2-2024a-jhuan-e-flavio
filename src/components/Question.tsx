@@ -1,36 +1,36 @@
-import { MouseEvent } from "react";
 
-function ListGroup() {
-  const items = [
-    "An item",
-    "A second item",
-    "A third item",
-    "A fourth item",
-    "And a fifth one",
-  ];
-	
-	const title = "qual o certo"
+interface QuestionProps {
+  title: string;
+  options: string[];
+}
+
+function Question(props : QuestionProps) {
+  const options = props.options;
+	const title = props.title;
+
 
   return (
-    <>
-      <form action="#">
-				<h1>{title}</h1>
-        {items.map((item) => (
+    <div className="container">
+			<h2>{title}</h2>
+    
+      <form>
+        {options.map((item, index) => (
           <div className="form-check mb-3">
             <input
-              className="form-check-input"
+              className={"form-check-input"}
               type="radio"
               name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label" htmlFor="flexRadioDefault1">
+              id={`option${index}`}
+              />
+
+            <label className="form-check-label" htmlFor={`option${index}`}>
               {item}
             </label>
           </div>
         ))}
       </form>
-    </>
+    </div>
   );
 }
 
-export default ListGroup;
+export default Question;
