@@ -1,9 +1,9 @@
-import ListGroup from "./components/ListGroup"
+import Question from "./components/Question"
 
 function App() {
   return (
     <div>
-      <ListGroup/>
+      <Question/>
     </div>
   );
 }

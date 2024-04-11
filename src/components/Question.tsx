@@ -1,5 +1,6 @@
+import { MouseEvent } from "react";
 
-function Question() {
+function ListGroup() {
   const items = [
     "An item",
     "A second item",
@@ -32,4 +33,4 @@ function Question() {
   );
 }
 
-export default Question;
+export default ListGroup;
