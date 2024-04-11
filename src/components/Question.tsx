@@ -2,11 +2,13 @@
 interface QuestionProps {
   title: string;
   options: string[];
+  correct: number;
 }
 
 function Question(props : QuestionProps) {
   const options = props.options;
 	const title = props.title;
+  const correct = props.correct;
 
 
   return (

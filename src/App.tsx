@@ -12,6 +12,7 @@ function App() {
           "And a fifth one",
         ]}
         title={"a"}
+        correct={2}
       />
     </div>
   );
