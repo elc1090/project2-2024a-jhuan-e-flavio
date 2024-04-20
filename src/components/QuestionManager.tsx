@@ -18,7 +18,7 @@ function QuestionManager({questionData} : Props) {
         userAnswers[index] = value;
     }
 
-    //console.log(questionData);
+    console.log(questionData);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     
@@ -36,7 +36,8 @@ function QuestionManager({questionData} : Props) {
         <>
         <ul>
             {questionData.map((question, index) => (
-                <li style={{
+                <li key = {index}
+                    style={{
                     display: currentQuestion === index ? 'block' : 'none'
                 }}>
                     <Question

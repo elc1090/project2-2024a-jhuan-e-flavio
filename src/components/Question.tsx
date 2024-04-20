@@ -35,9 +35,25 @@ function Question(props : QuestionProps) {
               dangerouslySetInnerHTML={{ __html: item }}/>
           </div>
         ))}
+
       </form>
     </div>
   );
+
+  // nao funciona (atualiza sempre por algum motivo =( )
+  {/* <form>
+    {options.map((item, index) => (
+      <Button
+        trigger = {() => handleOptionChange(index)}
+      >
+        <label 
+          className="form-check-label" 
+          htmlFor={`option${index}`} 
+          dangerouslySetInnerHTML={{ __html: item }}/>
+      </Button>
+      
+    ))}
+  </form> */}
 }
 
 export default Question;
