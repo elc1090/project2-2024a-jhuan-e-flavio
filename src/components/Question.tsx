@@ -2,32 +2,37 @@
 interface QuestionProps {
   title: string;
   options: string[];
-  correct: number;
+  onSetOption: (op : number) => void;
 }
 
 function Question(props : QuestionProps) {
   const options = props.options;
 	const title = props.title;
-  const correct = props.correct;
+  const setOption = props.onSetOption;
 
+  const handleOptionChange = (index: number) => {
+    setOption(index);
+  }
 
   return (
-    <div className="container">
-			<h2>{title}</h2>
+    <div className="container d-block w-100" >
+			<h2 dangerouslySetInnerHTML={{ __html: title }}/>
     
       <form>
         {options.map((item, index) => (
-          <div className="form-check mb-3">
+          <div className="form-check">
             <input
               className={"form-check-input"}
               type="radio"
               name="flexRadioDefault"
               id={`option${index}`}
+              onChange = {() => handleOptionChange(index)}
               />
 
-            <label className="form-check-label" htmlFor={`option${index}`}>
-              {item}
-            </label>
+            <label 
+              className="form-check-label" 
+              htmlFor={`option${index}`} 
+              dangerouslySetInnerHTML={{ __html: item }}/>
           </div>
         ))}
       </form>
