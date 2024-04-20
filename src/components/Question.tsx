@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import {Stack, Form, Button, Badge} from 'react-bootstrap';
 
 interface QuestionProps {
   title: string;
@@ -8,52 +10,38 @@ interface QuestionProps {
 function Question(props : QuestionProps) {
   const options = props.options;
 	const title = props.title;
-  const setOption = props.onSetOption;
+  const onSetOption = props.onSetOption;
+
+  const [activeOption, setActiveOption] = useState(-1);
 
   const handleOptionChange = (index: number) => {
-    setOption(index);
+    onSetOption(index);
+    setActiveOption(index);
   }
 
   return (
-    <div className="container d-block w-100" >
-			<h2 dangerouslySetInnerHTML={{ __html: title }}/>
-    
-      <form>
-        {options.map((item, index) => (
-          <div className="form-check">
-            <input
-              className={"form-check-input"}
-              type="radio"
-              name="flexRadioDefault"
-              id={`option${index}`}
-              onChange = {() => handleOptionChange(index)}
-              />
+    <Form className="d-flex flex-column align-items-center p-5">
+        <Form.Label className="text-center col-md-5">
+			    <h2 dangerouslySetInnerHTML={{ __html: title }}/>
+        </Form.Label>
 
-            <label 
-              className="form-check-label" 
-              htmlFor={`option${index}`} 
-              dangerouslySetInnerHTML={{ __html: item }}/>
-          </div>
-        ))}
+        <Stack gap={3} className="col-md-3 mx-auto">
+          {options.map((item, index) => (
+            <Button 
+              variant={activeOption === index ? "success" : "outline-primary"}
+              onClick={() => handleOptionChange(index)}
+              className="d-flex justify-content-between"
+            >
+              <Badge pill 
+                bg={activeOption === index ? "success" : "primary"}
+                >{index}</Badge>
+              <label dangerouslySetInnerHTML={{ __html: item }}></label>
+            </Button>
 
-      </form>
-    </div>
+          ))}
+        </Stack>
+    </Form>
   );
-
-  // nao funciona (atualiza sempre por algum motivo =( )
-  {/* <form>
-    {options.map((item, index) => (
-      <Button
-        trigger = {() => handleOptionChange(index)}
-      >
-        <label 
-          className="form-check-label" 
-          htmlFor={`option${index}`} 
-          dangerouslySetInnerHTML={{ __html: item }}/>
-      </Button>
-      
-    ))}
-  </form> */}
 }
 
 export default Question;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Question from './Question';
 import {question} from './QuestionsSource';
+import {Nav, Button, Stack} from 'react-bootstrap';
 
 
 interface Props {
@@ -11,14 +12,13 @@ function QuestionManager({questionData} : Props) {
     const leng = questionData.length;
     const correctAnswers = questionData.map((question) => question.correct);
 
-    let userAnswers = new Array(leng).fill(-1);
+    const [userAnswers, setUserAnswer] = useState(new Array(leng).fill(-1));
 
     const handleAnswerChange = (index: number, value: number) => {
-        console.log(index, value);
-        userAnswers[index] = value;
+        let a = userAnswers.slice();
+        a[index] = value
+        setUserAnswer(a);
     }
-
-    console.log(questionData);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     
@@ -31,6 +31,15 @@ function QuestionManager({questionData} : Props) {
         if (currentQuestion === 0) return
         setCurrentQuestion(currentQuestion - 1);
     }
+
+    const handleSubmit = () => {
+        console.log(userAnswers);
+        console.log(correctAnswers);
+        alert(`You got ${userAnswers.filter((ans, index) => ans === correctAnswers[index]).length} correct answers`);
+    }
+
+    const isLastQuestion = currentQuestion === leng - 1;
+    const isFirstQuestion = currentQuestion === 0;
 
     return (
         <>
@@ -49,26 +58,31 @@ function QuestionManager({questionData} : Props) {
             ))}
         </ul>
 
-        <nav className="d-flex justify-content-around">
-        <button onClick={handlePreviousQuestion}>
-            Previous
-        </button>
-            <ul className="d-flex w-25 justify-content-around">
-                {questionData.map((_, index) => (
-                    <li>
-                        <button onClick={() => setCurrentQuestion(index)}>
-                            {index + 1}
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        <button onClick={handleNextQuestion}>
-            Next
-        </button>
-        </nav>
-        
+        <Nav className="d-flex justify-content-around">
+            <Button 
+                variant={isFirstQuestion ? "secondary" : "primary"}
+                onClick={handlePreviousQuestion}
+                disabled={isFirstQuestion}>
+                Previous
+            </Button>
 
-        
+            <Stack direction="horizontal" gap={3}>
+                {questionData.map((_, index) => (
+                    <Button 
+                        key={index}
+                        variant={currentQuestion === index ? "primary" : "outline-primary"}
+                        onClick={() => setCurrentQuestion(index)}>
+                        {index + 1}
+                    </Button>
+                ))}
+            </Stack>
+
+            <Button 
+                onClick={isLastQuestion ? handleSubmit : handleNextQuestion}
+                variant={isLastQuestion ? "success" : "primary"}>
+                {isLastQuestion ? 'Submit' : 'Next'}
+            </Button>
+        </Nav>
     </>
     )
 }
