@@ -2,15 +2,15 @@ import { useState } from 'react';
 import Question from './Question';
 import {question} from './QuestionsSource';
 import {Nav, Button, Stack} from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 
-interface Props {
-    questionData : question[];
-}
 
-function QuestionManager({questionData} : Props) {
+function QuestionManager() {
+    const location = useLocation();
+    const questionData = location.state.questions;
     const leng = questionData.length;
-    const correctAnswers = questionData.map((question) => question.correct);
+    const correctAnswers: number[] = questionData.map((question: question) => question.correct);
 
     const [userAnswers, setUserAnswer] = useState(new Array(leng).fill(-1));
 
@@ -44,8 +44,8 @@ function QuestionManager({questionData} : Props) {
     return (
         <>
         <ul>
-            {questionData.map((question, index) => (
-                <li key = {index}
+            {questionData.map((question: question, index: number) => (
+                <li key={index}
                     style={{
                     display: currentQuestion === index ? 'block' : 'none'
                 }}>
@@ -67,7 +67,7 @@ function QuestionManager({questionData} : Props) {
             </Button>
 
             <Stack direction="horizontal" gap={3}>
-                {questionData.map((_, index) => (
+                {questionData.map((_: any, index: number) => (
                     <Button 
                         key={index}
                         variant={currentQuestion === index ? "primary" : "outline-primary"}
@@ -84,7 +84,7 @@ function QuestionManager({questionData} : Props) {
             </Button>
         </Nav>
     </>
-    )
+    ) as JSX.Element;
 }
 
 export default QuestionManager;
