@@ -4,11 +4,13 @@ import {question} from './QuestionsSource';
 import {Nav, Button, Stack} from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 
+import "./Question.css";
+
 
 
 function QuestionManager() {
     const location = useLocation();
-    
+
     const questionData = location.state.questions;
     const leng = questionData.length;
     const correctAnswers: number[] = questionData.map((question: question) => question.correct);
@@ -42,7 +44,7 @@ function QuestionManager() {
     const isFirstQuestion = currentQuestion === 0;
 
     return (
-        <>
+        <div className="main-content">
         <ul>
             {questionData.map((question: question, index: number) => (
                 <li key={index}
@@ -60,32 +62,33 @@ function QuestionManager() {
 
         <Nav className="align-items-center row d-flex flex-wrap justify-content-around m-3 gap-3">
                 <Button 
-                    variant={isFirstQuestion ? "secondary" : "primary"}
                     onClick={handlePreviousQuestion}
                     disabled={isFirstQuestion}
-                    className="col-5 col-sm-2 p-4"
+                    className="col-5 col-sm-2 p-4 question_button"
                     >
                     Previous
                 </Button>
                 <Button 
                     onClick={isLastQuestion ? handleSubmit : handleNextQuestion}
-                    variant={isLastQuestion ? "success" : "primary"}
-                    className="col-5 col-sm-2 p-4">
+                    className="col-5 col-sm-2 p-4 question_button">
                     {isLastQuestion ? 'Submit' : 'Next'}
                 </Button>
                 <Stack direction="horizontal" gap={3} className="col-sm order-sm-2 justify-content-center flex-wrap p-3">
                     {questionData.map((_ : string, index : number) => (
                         <Button 
                             key={index}
-                            variant={currentQuestion === index ? "primary" : "outline-primary"}
                             onClick={() => setCurrentQuestion(index)}
+                            className={
+                                "question_button" +
+                                (index === currentQuestion ? " question_active" : "")
+                            }
                             >
                             {index + 1}
                         </Button>
                     ))}
                 </Stack>
         </Nav>
-    </>
+    </div>
     ) as JSX.Element;
 }
 

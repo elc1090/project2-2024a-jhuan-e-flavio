@@ -1,0 +1,25 @@
+
+.question_button {
+    background-color: #2166B4;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.question_button:hover {
+    background-color: #2A9D8F !important;
+    color: white;
+    transform: scale(1.05);
+}
+
+.question_active {
+    background-color: #2A9D8F !important;
+    color: black;
+}
+
+.question_badge {
+    background-color: transparent;
+    color: #F4A259;
+    text-transform: capitalize;
+    font-weight: bolder;
+}

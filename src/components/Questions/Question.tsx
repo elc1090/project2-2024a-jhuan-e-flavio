@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {Stack, Form, Button, Badge} from 'react-bootstrap';
+import "./Question.css";
 
 interface QuestionProps {
   title: string;
@@ -20,7 +21,10 @@ function Question(props : QuestionProps) {
   }
 
   return (
-    <Form className="d-flex flex-column align-items-center p-5">
+    <Form className="d-flex flex-column align-items-center p-5 text-white"
+      style={{
+        backgroundColor:"#0B132B"
+      }}>
         <Form.Label className="text-center col-md-5">
 			    <h2 dangerouslySetInnerHTML={{ __html: title }}/>
         </Form.Label>
@@ -30,12 +34,18 @@ function Question(props : QuestionProps) {
             <Button 
               variant={activeOption === index ? "success" : "outline-primary"}
               onClick={() => handleOptionChange(index)}
-              className="d-flex justify-content-between"
+              className={
+                "question_button d-flex p-3 justify-content-between"
+                + (index===activeOption ? " question_active" : "")
+              }
             >
-              <Badge pill 
-                bg={activeOption === index ? "success" : "primary"}
-                >{index}</Badge>
-              <label dangerouslySetInnerHTML={{ __html: item }}></label>
+              <span 
+                className={
+                  "d-flex align-items-center question_badge" 
+                  + (index===activeOption ? " question_active" : "")
+                }
+                >{index}</span>
+              <label className="px-3" dangerouslySetInnerHTML={{ __html: item }}></label>
             </Button>
 
           ))}
