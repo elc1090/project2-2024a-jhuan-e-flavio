@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import React from "react";
 
-import QuestionManager from "../Questions/QuestionManager"
+// import QuestionManager from "../Questions/QuestionManager"
 import {getQuestionsData, question} from "../Questions/QuestionsSource";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from "react-bootstrap";

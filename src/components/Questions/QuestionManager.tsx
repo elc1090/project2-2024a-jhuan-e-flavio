@@ -8,10 +8,12 @@ import { useLocation } from 'react-router-dom';
 
 function QuestionManager() {
     const location = useLocation();
+    
     const questionData = location.state.questions;
     const leng = questionData.length;
     const correctAnswers: number[] = questionData.map((question: question) => question.correct);
 
+    const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswer] = useState(new Array(leng).fill(-1));
 
     const handleAnswerChange = (index: number, value: number) => {
@@ -20,8 +22,6 @@ function QuestionManager() {
         setUserAnswer(a);
     }
 
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    
     const handleNextQuestion = () => {
         if (currentQuestion === leng - 1) return
         setCurrentQuestion(currentQuestion + 1);
@@ -58,30 +58,32 @@ function QuestionManager() {
             ))}
         </ul>
 
-        <Nav className="d-flex justify-content-around">
-            <Button 
-                variant={isFirstQuestion ? "secondary" : "primary"}
-                onClick={handlePreviousQuestion}
-                disabled={isFirstQuestion}>
-                Previous
-            </Button>
-
-            <Stack direction="horizontal" gap={3}>
-                {questionData.map((_: any, index: number) => (
-                    <Button 
-                        key={index}
-                        variant={currentQuestion === index ? "primary" : "outline-primary"}
-                        onClick={() => setCurrentQuestion(index)}>
-                        {index + 1}
-                    </Button>
-                ))}
-            </Stack>
-
-            <Button 
-                onClick={isLastQuestion ? handleSubmit : handleNextQuestion}
-                variant={isLastQuestion ? "success" : "primary"}>
-                {isLastQuestion ? 'Submit' : 'Next'}
-            </Button>
+        <Nav className="align-items-center row d-flex flex-wrap justify-content-around m-3 gap-3">
+                <Button 
+                    variant={isFirstQuestion ? "secondary" : "primary"}
+                    onClick={handlePreviousQuestion}
+                    disabled={isFirstQuestion}
+                    className="col-5 col-sm-2 p-4"
+                    >
+                    Previous
+                </Button>
+                <Button 
+                    onClick={isLastQuestion ? handleSubmit : handleNextQuestion}
+                    variant={isLastQuestion ? "success" : "primary"}
+                    className="col-5 col-sm-2 p-4">
+                    {isLastQuestion ? 'Submit' : 'Next'}
+                </Button>
+                <Stack direction="horizontal" gap={3} className="col-sm order-sm-2 justify-content-center flex-wrap p-3">
+                    {questionData.map((_ : string, index : number) => (
+                        <Button 
+                            key={index}
+                            variant={currentQuestion === index ? "primary" : "outline-primary"}
+                            onClick={() => setCurrentQuestion(index)}
+                            >
+                            {index + 1}
+                        </Button>
+                    ))}
+                </Stack>
         </Nav>
     </>
     ) as JSX.Element;
