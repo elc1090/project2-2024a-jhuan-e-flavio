@@ -7,7 +7,8 @@ export type question = {
 
 async function fetchQuestionsData(category : any) {
     try {
-      const response = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`);
+      const response = await fetch(`https://opentdb.com/api.php?amount=10&
+        ${category == 0 ? "" : `category=${category}`}&type=multiple`);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }

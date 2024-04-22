@@ -41,7 +41,7 @@ function Categories() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [questions, setQuestions] = useState<question[]>([]);
   const [loaded, setLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("any"); 
+  const [selectedCategory, setSelectedCategory] = useState<string>("0"); 
   const navigate = useNavigate();
   const [categoryAvailable, setCategoryAvailable] = useState(true);
 
