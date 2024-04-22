@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Categories.css'; // Importe seus estilos personalizados aqui
 
 const categories = [
-  { value: "any", label: "Any Category", icon: "fa-home"  },
+  { value: "0", label: "Any Category", icon: "fa-home"  },
   { value: "9", label: "General Knowledge" , icon: "fa-home" },
   { value: "10", label: "Entertainment: Books" , icon: "fa-home" },
   { value: "11", label: "Entertainment: Film" , icon: "fa-home" },
@@ -39,7 +39,7 @@ function Categories() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [questions, setQuestions] = useState<question[]>([]);
   const [loaded, setLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("any"); 
+  const [selectedCategory, setSelectedCategory] = useState<string>("0"); 
   const navigate = useNavigate();
 
   useEffect(() => {

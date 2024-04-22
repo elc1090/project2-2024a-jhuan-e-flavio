@@ -1,8 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { question } from "./QuestionsSource";
-import { Button, ListGroup, Row, Stack } from 'react-bootstrap';
+import { Button, ListGroup, Stack } from 'react-bootstrap';
 import './Question.css';
-import { useEffect, useState } from "react";
 
 enum QuestionState {
   Correct,
@@ -18,7 +17,6 @@ type statefulQuestion = {
 function QuizResult() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [hasAddedPoints, setHasAddedPoints] = useState(false);
 
   const questions: question[] = location.state.questionData;
   const sQuestions: statefulQuestion[] = questions.map(question => {
@@ -110,13 +108,21 @@ function QuizResult() {
 
       <Stack className="mx-auto d-flex flex-row gap-5 p-5">
 
-        <Button className="question_button p-4" 
+        <Button className="p-4 text-white"
+                style={{
+                  backgroundColor: "#FF9A30",
+                  fontWeight: "bold"
+                }} 
                 onClick={() => navigate("/categories")}
         >
           Play Again
         </Button>
 
-        <Button className="question_button p-4" 
+        <Button className="p-4 text-white"
+                style={{
+                  backgroundColor: "#FF9A30",
+                  fontWeight: "bold"
+                }} 
                 onClick={() => navigate("/")}
         >
           Back to Lobby
