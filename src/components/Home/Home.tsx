@@ -65,7 +65,7 @@ function Home() {
                     icon={faCoins}
                     style={{ color: "#FDD65F" }}
                   />
-                  <p className="card-text">{localStorage.getItem("points")}</p>
+                  <p className="card-text">{localStorage.getItem("points") || 0}</p>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ function Home() {
           <Modal.Title>Digite seu nome</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
+          <input className="form-control"
             type="text"
             placeholder="Digite seu nome"
             value={tempName}
@@ -95,7 +95,7 @@ function Home() {
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Fechar
           </Button>
-          <Button variant="primary" onClick={handleSaveName}>
+          <Button  style={{ backgroundColor: "#FF9A30"}} variant="primary" onClick={handleSaveName}>
             Salvar
           </Button>
         </Modal.Footer>
