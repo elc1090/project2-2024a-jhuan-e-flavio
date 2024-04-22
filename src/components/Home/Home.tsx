@@ -13,23 +13,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
-  const [questions, setQuestions] = useState<question[]>([]);
-  const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate();
   
-  useEffect(() => {
-    if (loaded) {
-      navigate('/question', { state: { questions } });
-    }
-  }, [loaded, questions, navigate]);
-
-  const trigQuestions = () => {
-    getQuestionsData().then((data) => {
-      setQuestions(data);
-      setLoaded(true);
-    });
-  }
-
   return (
     <div className="main-content">
        <div className="d-grid gap-5">
@@ -67,7 +52,7 @@ function Home() {
         <Button
           style={{ backgroundColor: '#FF9A30', width: '30%' }}
           variant="primary"
-          onClick={trigQuestions}>
+          onClick={() => navigate('/categories')}>
           <h1>Jogar</h1>
         </Button>
       </div>
