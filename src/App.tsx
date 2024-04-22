@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path='*' element={<Home />} />
         <Route path='/question' element={<QuestionManager />} />
-        <Route path='/result' element={<QuizResult />} />
+        <Route path='/result' element={<QuizResult />}/>
         <Route path='/categories' element={<Categories />} />
       </Routes>
     </BrowserRouter>

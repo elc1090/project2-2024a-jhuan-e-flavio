@@ -2,7 +2,6 @@ import { useState } from "react";
 import Question from "./Question";
 import { question } from "./QuestionsSource";
 import { Nav, Button, Stack } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
 
 import "./Question.css";
 
@@ -12,7 +11,6 @@ interface Props {
 }
 
 function QuizzNavigation({ questions, onSubmit }: Props) {
-  const location = useLocation();
 
   const leng = questions.length;
 

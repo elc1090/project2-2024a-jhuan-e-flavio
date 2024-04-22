@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { question } from "./QuestionsSource";
 import { Button, ListGroup, Row, Stack } from 'react-bootstrap';
 import './Question.css';
+import { useEffect, useState } from "react";
 
 enum QuestionState {
   Correct,
@@ -17,6 +18,7 @@ type statefulQuestion = {
 function QuizResult() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [hasAddedPoints, setHasAddedPoints] = useState(false);
 
   const questions: question[] = location.state.questionData;
   const sQuestions: statefulQuestion[] = questions.map(question => {
@@ -28,6 +30,7 @@ function QuizResult() {
     return { question, state };
   });
 
+  
   const totalCorrect = sQuestions.filter(q => q.state == QuestionState.Correct).length;
   const totalUnanswered = sQuestions.filter(q => q.state === QuestionState.Unanswered).length;
   const totalWrong = sQuestions.length - totalCorrect - totalUnanswered;

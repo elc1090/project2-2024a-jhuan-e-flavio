@@ -14,6 +14,15 @@ function QuestionManager() {
     questionData.forEach((q, index) => {
       questionData[index].userAnswer = userAnswers[index];
     });
+
+    const storedPoints = parseInt(localStorage.getItem('points') || '0');
+    const totalCorrect = questionData.filter(q => q.userAnswer === q.correct).length;
+
+    if (!storedPoints)
+      localStorage.setItem('points', totalCorrect.toString());
+    else
+      localStorage.setItem('points', (totalCorrect + storedPoints).toString());
+
     navigate('/result', { state: { questionData } });
   };
 
