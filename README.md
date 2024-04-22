@@ -16,6 +16,8 @@ A aplicação desenvolvida é um site de quiz onde os usuários podem personaliz
 
 As perguntas são obtidas através da API dedicada às perguntas de diversos temas, a [Trivia API](https://opentdb.com/api_config.php), disponibilizada pela Open Trivia Database. Os usuários podem escolher o tema das perguntas que desejam responder e serão redirecionados para uma tela com 10 perguntas sobre o assunto selecionado. Ao final, eles podem submeter suas respostas e conferir quais questões acertaram. Para cada pergunta respondida corretamente, um ponto é somado para o usuário.
 
+O aplicativo é responsivo.
+
 #### API escolhida
 
 A API utilizada foi a ![Open Trivia Database](https://opentdb.com/api_config.php)
