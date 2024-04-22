@@ -43,6 +43,7 @@ function Categories() {
   const [loaded, setLoaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("any"); 
   const navigate = useNavigate();
+  const [categoryAvailable, setCategoryAvailable] = useState(true);
 
   useEffect(() => {
     if (loaded) {
@@ -53,9 +54,15 @@ function Categories() {
   const trigQuestions = () => {
     getQuestionsData(selectedCategory).then((data) => {
       setQuestions(data);
-      setLoaded(true);
+      if (data && data.length > 0) {
+        setLoaded(true);
+      } else {
+        setCategoryAvailable(false);
+      }
     });
-  }
+  };
+  
+  
 
   const handleCategorySelect = (categoryValue: string) => {
     console.log(categoryValue);
@@ -70,7 +77,13 @@ function Categories() {
             <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
           </a>
           <h1 className="text-white mx-auto">CATEGORIAS</h1>
+          {!categoryAvailable && (
+          <div className="alert alert-warning" role="alert">
+            Essa categoria não está disponível no momento. Por favor, escolha outra categoria.
+          </div>
+        )}
         </div>
+        
       </nav>
       <div className="container-fluid">
         <div className='text-white'>
@@ -105,6 +118,7 @@ function Categories() {
           
         </Carousel>
       </div>
+      
       <div className="container-fluid d-flex justify-content-center align-items-center mt-5 mb-5">
         <Button
           style={{ backgroundColor: '#FF9A30', minWidth:'30%', paddingTop: '15px', paddingBottom: '15px', fontSize: '1.5em'}}
