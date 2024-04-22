@@ -87,7 +87,16 @@
   
 .nav-user {
     background-color: #093252;
+    position: relative;
  
+}
+
+.alert-warning {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Certifique-se de que a mensagem esteja acima de outros elementos */
 }
 
 .card-points {

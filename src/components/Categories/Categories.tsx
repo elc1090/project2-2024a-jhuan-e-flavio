@@ -78,7 +78,7 @@ function Categories() {
           </a>
           <h1 className="text-white mx-auto">CATEGORIAS</h1>
           {!categoryAvailable && (
-          <div className="alert alert-warning" role="alert">
+          <div className="alert alert-warning " role="alert">
             Essa categoria não está disponível no momento. Por favor, escolha outra categoria.
           </div>
         )}
