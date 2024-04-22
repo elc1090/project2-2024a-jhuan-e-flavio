@@ -23,7 +23,7 @@ function Home() {
             <div className="col-4 mb-3 mt-5 p-0 card-user" style={{ minWidth: '240px', maxWidth: '540px' }}>
               <div className="row g-0">
                 <div className="col-2 d-flex justify-content-center align-items-center">
-                  <img src="/src/assets/caralouco.png" style={{ maxWidth: '80px' }} alt="Imagem" />
+                  <img src="/public/caralouco.png" style={{ maxWidth: '80px' }} alt="Imagem" />
                 </div>
                 <div className="col-6 card-user">
                   <div className="card-body">
