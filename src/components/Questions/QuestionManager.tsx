@@ -14,7 +14,6 @@ function QuestionManager() {
     questionData.forEach((q, index) => {
       questionData[index].userAnswer = userAnswers[index];
     });
-    console.log(questionData);
     navigate('/result', { state: { questionData } });
   };
 

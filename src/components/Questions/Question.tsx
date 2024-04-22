@@ -32,6 +32,7 @@ function Question(props : QuestionProps) {
         <Stack gap={3} className="col-md-3 mx-auto">
           {options.map((item, index) => (
             <Button 
+              key={index}
               variant={activeOption === index ? "success" : "outline-primary"}
               onClick={() => handleOptionChange(index)}
               className={

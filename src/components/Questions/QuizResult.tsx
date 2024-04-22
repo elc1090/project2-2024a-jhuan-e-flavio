@@ -1,6 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { question } from "./QuestionsSource";
-import { ListGroup } from 'react-bootstrap';
+import { Button, ListGroup, Row } from 'react-bootstrap';
 import './Question.css';
 
 enum QuestionState {
@@ -16,6 +16,7 @@ type statefulQuestion = {
 
 function QuizResult() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const questions: question[] = location.state.questionData;
   const sQuestions: statefulQuestion[] = questions.map(question => {
@@ -103,6 +104,10 @@ function QuizResult() {
             </ListGroup.Item>
           ))}
       </ListGroup>
+
+
+       { /*nao funciona pq n tem dados <Link className="question_button" to="/question">Play Again</Link>*/}
+
       </div>
     </div>
   ) as JSX.Element;
