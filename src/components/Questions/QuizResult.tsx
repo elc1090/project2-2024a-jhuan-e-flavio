@@ -1,6 +1,6 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { question } from "./QuestionsSource";
-import { Button, ListGroup, Row } from 'react-bootstrap';
+import { Button, ListGroup, Row, Stack } from 'react-bootstrap';
 import './Question.css';
 
 enum QuestionState {
@@ -73,7 +73,7 @@ function QuizResult() {
 
   return (
     <div className="main-content">
-      <div className="container-fluid">
+      <div className="container-fluid d-flex flex-column align-items-center">
 
       <h1 className="text-white mt-5 text-center">Quiz Results</h1>
 
@@ -105,8 +105,21 @@ function QuizResult() {
           ))}
       </ListGroup>
 
+      <Stack className="mx-auto d-flex flex-row gap-5 p-5">
 
-       { /*nao funciona pq n tem dados <Link className="question_button" to="/question">Play Again</Link>*/}
+        <Button className="question_button p-4" 
+                onClick={() => navigate("/categories")}
+        >
+          Play Again
+        </Button>
+
+        <Button className="question_button p-4" 
+                onClick={() => navigate("/")}
+        >
+          Back to Lobby
+        </Button>
+
+      </Stack>
 
       </div>
     </div>
