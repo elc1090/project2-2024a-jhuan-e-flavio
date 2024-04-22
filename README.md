@@ -76,7 +76,8 @@ Substitua este trecho por uma lista detalhada dos ambientes/ferramentas de desen
 - ![Documentação do React](https://react.dev/learn)
 - ![Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - ![Tutorial do YouTube muito bão](https://www.youtube.com/watch?v=SqcY0GlETPk&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D)
-- O Gregori Rubin Pinhalgrandense, que me ajudou a testar
+- O Gregori, que me ajudou a testar
+- O Gilson, que me ajudou a usar Routes
 
 ---
 Projeto entregue para a disciplina de [Desenvolvimento de Software para a Web](http://github.com/andreainfufsm/elc1090-2024a) em 2024a
