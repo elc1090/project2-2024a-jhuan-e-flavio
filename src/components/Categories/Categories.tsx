@@ -39,17 +39,17 @@ function Categories() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [questions, setQuestions] = useState<question[]>([]);
   const [loaded, setLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("any"); // Estado para armazenar a categoria selecionada
+  const [selectedCategory, setSelectedCategory] = useState<string>("any"); 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (loaded) {
-      navigate('/question', { state: { questions, selectedCategory } }); // Passando a categoria selecionada para a próxima rota
+      navigate('/question', { state: { questions } }); 
     }
   }, [loaded, questions, selectedCategory, navigate]);
 
   const trigQuestions = () => {
-    getQuestionsData().then((data) => {
+    getQuestionsData(selectedCategory).then((data) => {
       setQuestions(data);
       setLoaded(true);
     });
