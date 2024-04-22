@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter> 
       <Routes>
-        <Route path='/elc1090/project2-2024a-jhuan-e-flavio' element={<Home />} />
+        <Route path='*' element={<Home />} />
         <Route path='/question' element={<QuestionManager />} />
         <Route path='/result' element={<QuizResult />} />
         <Route path='/categories' element={<Categories />} />
