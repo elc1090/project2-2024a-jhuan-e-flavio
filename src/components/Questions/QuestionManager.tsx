@@ -1,32 +1,26 @@
 import { question } from "./QuestionsSource";
-import { useLocation } from "react-router-dom";
-
-import QuizzNavigation from "./QuizzNavigation";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
+import QuizNavigation from "./QuizNavigation";
 
 import "./Question.css";
 
 function QuestionManager() {
   const location = useLocation();
 
-  const questionData = location.state.questions;
-  const correctAnswers: number[] = questionData.map(
-    (question: question) => question.correct
-  );
+  const questionData : question[] = location.state.questions;
+  const navigate = useNavigate();
 
   const handleSubmit = (userAnswers: number[]) => {
-    console.log(userAnswers);
-    console.log(correctAnswers);
-    alert(
-      `You got ${
-        userAnswers.filter((ans, index) => ans === correctAnswers[index]).length
-      } correct answers`
-    );
+    questionData.forEach((q, index) => {
+      questionData[index].userAnswer = userAnswers[index];
+    });
+    console.log(questionData);
+    navigate('/result', { state: { questionData } });
   };
 
   return (
     <div className="main-content">
-      <QuizzNavigation questions={questionData} onSubmit={handleSubmit} />
+      <QuizNavigation questions={questionData} onSubmit={handleSubmit} />
     </div>
   ) as JSX.Element;
 }

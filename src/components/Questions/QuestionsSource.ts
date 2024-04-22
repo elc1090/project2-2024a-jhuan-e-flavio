@@ -2,6 +2,7 @@ export type question = {
   title: string;
   options: string[];
   correct: number;
+  userAnswer?: number;
 }
 
 async function fetchQuestionsData() {

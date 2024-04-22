@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Stack, Form, Button, Badge} from 'react-bootstrap';
+import {Stack, Form, Button} from 'react-bootstrap';
 import "./Question.css";
 
 interface QuestionProps {
