@@ -2,7 +2,7 @@
 
 ![Substitua a imagem ao lado por um screenshot do seu projeto](https://github.com/elc1090/project2-2024a-jhuan-e-flavio/blob/main/marselo.png)
 
-Acesso: Deploy aqui, Jhuan!
+Acesso: https://project2-2024a-jhuan-e-flavio-mrqghgy6f.vercel.app/
 
 
 ### Desenvolvedores
