@@ -7,6 +7,7 @@ Acesso: https://project2-2024a-jhuan-e-flavio-mrqghgy6f.vercel.app/
 
 ### Desenvolvedores
 Flávio Borin Júnior, Ciêncida da Computação
+
 Jhuan Luis Almeida Assumpção, Ciência da Computação
 
 
