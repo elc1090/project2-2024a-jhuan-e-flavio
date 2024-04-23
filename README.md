@@ -66,7 +66,6 @@ Script em TypeScript que realiza a requisição para a API. A função getQuesti
 
 #### Ambiente de desenvolvimento
 
-Substitua este trecho por uma lista detalhada dos ambientes/ferramentas de desenvolvimento utilizadas (por exemplo, VS Code + alguma extensão, etc.)
 - VsCode
 - Prettier
 
